@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AlternativeTitleScreenWidget extends StatefulWidget {
-  const AlternativeTitleScreenWidget({Key? key}) : super(key: key);
+class TitleScreenWidget extends StatefulWidget {
+  const TitleScreenWidget({Key? key}) : super(key: key);
 
   @override
-  State<AlternativeTitleScreenWidget> createState() => _AlternativeTitleScreenWidgetState();
+  State<TitleScreenWidget> createState() => _TitleScreenWidgetState();
 }
 
-class _AlternativeTitleScreenWidgetState extends State<AlternativeTitleScreenWidget> {
+class _TitleScreenWidgetState extends State<TitleScreenWidget> {
   TextEditingController cleanSearchController = TextEditingController();
 
   @override
@@ -59,6 +59,7 @@ class _AlternativeTitleScreenWidgetState extends State<AlternativeTitleScreenWid
                       ),
                     ),
                     child: TextField(
+                      controller: cleanSearchController,
                       decoration: InputDecoration(
                         hintText: "What a book?",
                         suffixIcon: IconButton(

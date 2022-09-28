@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_book_app/alternative_title_screen_%20widget.dart';
-import 'package:my_book_app/title_screen_widget.dart';
+import 'package:my_book_app/title_screen_%20widget.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         backgroundColor: Colors.white,
       ),
-      body: const AlternativeTitleScreenWidget(),
+      body: const TitleScreenWidget(),
     );
   }
 }
