@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_book_app/alternative_title_screen_%20widget.dart';
 import 'package:my_book_app/title_screen_widget.dart';
 
 void main() {
@@ -33,6 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         elevation: 0,
         title: Text(
@@ -41,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         backgroundColor: Colors.white,
       ),
-      body: const TitleScreenWidget(),
+      body: const AlternativeTitleScreenWidget(),
     );
   }
 }
