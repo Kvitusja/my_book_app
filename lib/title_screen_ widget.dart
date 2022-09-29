@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:my_book_app/books_want_to_read_widget.dart';
+import 'package:my_book_app/reading_now.dart';
+import 'books_read_scrollable_widget.dart';
+
 
 class TitleScreenWidget extends StatefulWidget {
   const TitleScreenWidget({Key? key}) : super(key: key);
@@ -132,6 +136,7 @@ class _TitleScreenWidgetState extends State<TitleScreenWidget> {
                       ),
                     ],
                   ),
+                  const BooksReadScrollableWidget(),
                 ],
               ),
             ),
@@ -148,6 +153,30 @@ class _TitleScreenWidgetState extends State<TitleScreenWidget> {
                   topLeft: Radius.circular(36.0),
                 ),
               ),
+              child: Column(
+                children: const [
+                  Padding(
+                    padding: EdgeInsets.only(left: 18.0, top: 12),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                          "Reading now"),
+                    ),
+                  ),
+                  ReadingNowWidget(),
+                  Padding(
+                    padding: EdgeInsets.only(left: 18.0, top: 18),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                          "Want to read"),
+                    ),
+                  ),
+                  BooksWantToReadWidget(),
+                ],
+              ),
             ),
           ), //Container//Container
         ],
@@ -155,3 +184,4 @@ class _TitleScreenWidgetState extends State<TitleScreenWidget> {
     ); //Center
   }
 }
+

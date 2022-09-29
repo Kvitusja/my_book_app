@@ -32,6 +32,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  dotted_border: ^2.0.0+2
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -53,6 +55,14 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+
+  assets:
+    - images/1.jpg
+    - images/2.jpg
+    - images/3.png
+    - images/4.jpg
+    - images/5.jpeg
+    - images/6.jpg
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
