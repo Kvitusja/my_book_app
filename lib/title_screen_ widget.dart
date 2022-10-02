@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_book_app/books_want_to_read_widget.dart';
 import 'package:my_book_app/reading_now.dart';
+import 'add_new_book.dart';
 import 'books_read_scrollable_widget.dart';
+import 'package:dotted_border/dotted_border.dart';
 
 
 class TitleScreenWidget extends StatefulWidget {
@@ -88,7 +90,31 @@ class _TitleScreenWidgetState extends State<TitleScreenWidget> {
                 )
               ],
             ),
-          ), //Container
+          ),
+          Positioned (
+            top: 148,
+            left: 60,
+            child: DottedBorder(
+              strokeWidth: 3,
+              dashPattern: const [3, 2],
+              borderType: BorderType.RRect,
+              radius: const Radius.circular(16.0),
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const AddNewBook()),
+                  );
+                },
+                child: const Text(
+                  "Add new book",
+                  style: TextStyle(
+                    color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold
+                  ),
+                ),
+              ),
+            ),
+          ),//Container
           Positioned(
             bottom: 220,
             child: Container(
@@ -103,40 +129,21 @@ class _TitleScreenWidgetState extends State<TitleScreenWidget> {
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Row(
-                    children: [
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Container(
-                            child: const Text(
-                              "Books read",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
+                children: const [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: EdgeInsets.all(12.0),
+                      child: Text(
+                        "Books read",
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      const SizedBox(
-                        width: 165,
-                      ),
-                      OutlinedButton(
-                        onPressed: () {},
-                        style: OutlinedButton.styleFrom(
-                          side: const BorderSide(width: 2.0),
-                          shape: const StadiumBorder(),
-                        ),
-                        child: const Text(
-                          "Add new book",
-                          style: TextStyle(
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                  const BooksReadScrollableWidget(),
+                  SizedBox(
+                    width: 165,
+                  ),
+                  BooksReadScrollableWidget(),
                 ],
               ),
             ),
