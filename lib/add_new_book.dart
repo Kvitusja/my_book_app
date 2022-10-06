@@ -24,30 +24,42 @@ class _AddNewBookState extends State<AddNewBook> {
       ),
       body: Column(
         children: [
-          DottedBorder(
-            strokeWidth: 3,
-            dashPattern: const [3, 2],
-            borderType: BorderType.RRect,
-            radius: const Radius.circular(16.0),
-            child: const TextField(),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: TextField(
+              decoration: InputDecoration(
+                  labelText: 'Book name',
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  floatingLabelStyle: const TextStyle(color: Colors.black),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  )),
+            ),
           ),
-          Container(
-              height: 65,
-              width: 310,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black, width: 2.5),
-                  color: Colors.orangeAccent,
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(20.0),)
-              ),
-              child: const TextField()),
-      DottedBorder(
-        strokeWidth: 3,
-        dashPattern: const [3, 2],
-        borderType: BorderType.RRect,
-        radius: const Radius.circular(16.0),
-        child: const TextField(),
-      ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: TextField(
+              decoration: InputDecoration(
+                floatingLabelBehavior: FloatingLabelBehavior.always,
+                  labelText: 'Author',
+                  floatingLabelStyle: const TextStyle(color: Colors.black),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  )),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: TextField(
+              decoration: InputDecoration(
+                  labelText: 'My feedback',
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  floatingLabelStyle: const TextStyle(color: Colors.black),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  )),
+            ),
+          ),
         ],
       ),
     );

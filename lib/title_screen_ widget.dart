@@ -37,7 +37,7 @@ class _TitleScreenWidgetState extends State<TitleScreenWidget> {
                   color: Colors.white,
                 ),
                 Positioned(
-                  top: 60,
+                  top: 40,
                   left: 54,
                   child: Container(
                     height: 60,
@@ -52,7 +52,7 @@ class _TitleScreenWidgetState extends State<TitleScreenWidget> {
                   ),
                 ),
                 Positioned(
-                  top: 60,
+                  top: 40,
                   left: 65,
                   child: Container(
                     height: 50,
@@ -92,7 +92,7 @@ class _TitleScreenWidgetState extends State<TitleScreenWidget> {
             ),
           ),
           Positioned (
-            top: 148,
+            top: 126,
             left: 60,
             child: DottedBorder(
               strokeWidth: 3,
@@ -149,7 +149,7 @@ class _TitleScreenWidgetState extends State<TitleScreenWidget> {
             ),
           ),
           Positioned(
-            top: 430,
+            top: 410,
             child: Container(
               width: 400,
               height: 320,
