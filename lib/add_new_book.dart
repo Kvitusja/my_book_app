@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:dotted_border/dotted_border.dart';
+
+import 'add_book_field.dart';
 
 class AddNewBook extends StatefulWidget {
   const AddNewBook({
@@ -11,6 +12,8 @@ class AddNewBook extends StatefulWidget {
 }
 
 class _AddNewBookState extends State<AddNewBook> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +25,20 @@ class _AddNewBookState extends State<AddNewBook> {
         ),
         backgroundColor: Colors.white,
       ),
-      body: Column(
+      body: ListView.builder(
+          itemCount: 3,
+          itemBuilder: (BuildContext context, int index) {
+            return const AddBookField(
+              labelText: "Book name",
+            );
+          }),
+    );
+  }
+}
+
+
+/*
+Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(12.0),
@@ -34,6 +50,20 @@ class _AddNewBookState extends State<AddNewBook> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   )),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: FloatingActionButton(
+                  heroTag: '1',
+                  elevation: 0,
+                  backgroundColor: Colors.orangeAccent,
+                  child:const Icon(
+                      color: Colors.black,
+                      Icons.add),
+                  onPressed: (){}),
             ),
           ),
           Padding(
@@ -49,6 +79,20 @@ class _AddNewBookState extends State<AddNewBook> {
             ),
           ),
           Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: FloatingActionButton(
+                  heroTag: '3',
+                  elevation: 0,
+                  backgroundColor: Colors.orangeAccent,
+                  child:const Icon(
+                      color: Colors.black,
+                      Icons.add),
+                  onPressed: (){}),
+            ),
+          ),
+          Padding(
             padding: const EdgeInsets.all(12.0),
             child: TextField(
               decoration: InputDecoration(
@@ -60,8 +104,20 @@ class _AddNewBookState extends State<AddNewBook> {
                   )),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: FloatingActionButton(
+                  heroTag: '2',
+                  elevation: 0,
+                  backgroundColor: Colors.orangeAccent,
+                  child:const Icon(
+                      color: Colors.black,
+                      Icons.add),
+                  onPressed: (){}),
+            ),
+          ),
         ],
       ),
-    );
-  }
-}
+ */
