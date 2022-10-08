@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:my_book_app/data/data.dart';
 
 import 'add_book_field.dart';
 
@@ -12,7 +14,36 @@ class AddNewBook extends StatefulWidget {
 }
 
 class _AddNewBookState extends State<AddNewBook> {
+  TextEditingController bookNameEditingController = TextEditingController();
+  TextEditingController authorNameEditingController = TextEditingController();
+  TextEditingController myFeedbackEditingController = TextEditingController();
+  final List<TextEditingController> controllers = [];
 
+  final _myBox = Hive.box('my_box');
+  MyDataBase myDataBase = MyDataBase();
+
+  final List<String> labelText = ['Book name', 'Book author', 'My feedback'];
+
+  @override
+  void initState() {
+    controllers.addAll([
+      bookNameEditingController,
+      authorNameEditingController,
+      myFeedbackEditingController
+    ]);
+    super.initState();
+  }
+
+  void saveNewBook() {
+    setState(() {
+      var bookFieldsData = {
+        labelText.elementAt(0): bookNameEditingController.text,
+        labelText.elementAt(1): authorNameEditingController.text,
+        labelText.elementAt(2): myFeedbackEditingController.text
+      };
+      myDataBase.books.add(bookFieldsData);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,96 +59,26 @@ class _AddNewBookState extends State<AddNewBook> {
       body: ListView.builder(
           itemCount: 3,
           itemBuilder: (BuildContext context, int index) {
-            return const AddBookField(
-              labelText: "Book name",
+            return AddBookField(
+              controller: controllers.elementAt(index),
+              labelText: labelText.elementAt(index),
             );
           }),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(right: 20.0),
+        child: Align(
+          alignment: Alignment.bottomRight,
+          child: FloatingActionButton(
+              elevation: 0,
+              backgroundColor: Colors.orangeAccent,
+              child: const Icon(color: Colors.black, Icons.add),
+              onPressed: () {
+                saveNewBook();
+              }),
+        ),
+      ),
     );
   }
 }
 
 
-/*
-Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: TextField(
-              decoration: InputDecoration(
-                  labelText: 'Book name',
-                  floatingLabelBehavior: FloatingLabelBehavior.always,
-                  floatingLabelStyle: const TextStyle(color: Colors.black),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  )),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: FloatingActionButton(
-                  heroTag: '1',
-                  elevation: 0,
-                  backgroundColor: Colors.orangeAccent,
-                  child:const Icon(
-                      color: Colors.black,
-                      Icons.add),
-                  onPressed: (){}),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: TextField(
-              decoration: InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-                  labelText: 'Author',
-                  floatingLabelStyle: const TextStyle(color: Colors.black),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  )),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: FloatingActionButton(
-                  heroTag: '3',
-                  elevation: 0,
-                  backgroundColor: Colors.orangeAccent,
-                  child:const Icon(
-                      color: Colors.black,
-                      Icons.add),
-                  onPressed: (){}),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: TextField(
-              decoration: InputDecoration(
-                  labelText: 'My feedback',
-                  floatingLabelBehavior: FloatingLabelBehavior.always,
-                  floatingLabelStyle: const TextStyle(color: Colors.black),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  )),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: FloatingActionButton(
-                  heroTag: '2',
-                  elevation: 0,
-                  backgroundColor: Colors.orangeAccent,
-                  child:const Icon(
-                      color: Colors.black,
-                      Icons.add),
-                  onPressed: (){}),
-            ),
-          ),
-        ],
-      ),
- */

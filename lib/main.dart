@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:my_book_app/title_screen_%20widget.dart';
 
 
-void main() {
+void main() async {
+
+  await Hive.initFlutter();
+  var mybox = await Hive.openBox('my_box');
+
   runApp(const MyApp());
 }
 
