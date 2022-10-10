@@ -5,4 +5,16 @@ class MyDataBase {
 
   final _myBox = Hive.box('my_box');
 
+  void saveBooksMap() {
+    _myBox.put('key', books);
+    print('$books');
+  }
+
+  loadBooksMap() {
+    final books = _myBox.get('key');
+    print('$books');
+    return books;
+
+  }
+
 }

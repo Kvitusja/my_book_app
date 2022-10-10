@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:my_book_app/book_page.dart';
+import 'package:my_book_app/books_want_to_read_widget.dart';
 import 'package:my_book_app/data/data.dart';
 
 import 'add_book_field.dart';
@@ -31,6 +33,7 @@ class _AddNewBookState extends State<AddNewBook> {
       authorNameEditingController,
       myFeedbackEditingController
     ]);
+
     super.initState();
   }
 
@@ -42,6 +45,12 @@ class _AddNewBookState extends State<AddNewBook> {
         labelText.elementAt(2): myFeedbackEditingController.text
       };
       myDataBase.books.add(bookFieldsData);
+      myDataBase.saveBooksMap();
+
+      bookNameEditingController.clear();
+      authorNameEditingController.clear();
+      myFeedbackEditingController.clear();
+
     });
   }
 
@@ -74,6 +83,10 @@ class _AddNewBookState extends State<AddNewBook> {
               child: const Icon(color: Colors.black, Icons.add),
               onPressed: () {
                 saveNewBook();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const BookPage()),
+                );
               }),
         ),
       ),
